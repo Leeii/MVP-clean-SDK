@@ -64,26 +64,21 @@ public abstract class DefaultNetworkObserver<T> implements Observer<T> {
         t.printStackTrace();
         String errmsg = processException(t);
         if (!TextUtils.isEmpty(errmsg))
-            handlerException(t instanceof SocketTimeoutException, errmsg);
+            handlerException(errmsg);
     }
 
     /**
      * 处理异常
      *
-     * @param isTimeOut 是否是连接超时
-     * @param errorMsg  异常信息
+     * @param errorMsg 异常信息
      */
-    protected void handlerException(boolean isTimeOut, String errorMsg) {
+    protected void handlerException(String errorMsg) {
         switch (mode) {
             case DEFAULT:
                 //静默不做任何处理
                 break;
             case REPLACE:
-                if (isTimeOut) {
-                    helper.showCustom(errorMsg);
-                } else {
-                    helper.showError(errorMsg);
-                }
+                helper.showError(errorMsg);
                 break;
             case TOAST:
                 ToastyInstance.getInstance().showToast(context, errorMsg);
