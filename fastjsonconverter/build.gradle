@@ -1,0 +1,63 @@
+apply plugin: 'java-library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly rootProject.ext.defDependencied["retrofit"]
+    compileOnly rootProject.ext.defDependencied["fast-json"]
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+// 进行数字签名
+signing {
+    required { false }
+    sign configurations.archives
+}
+
+// type显示指定任务类型或任务, 这里指定要执行Javadoc这个task,这个task在gradle中已经定义
+task androidJavadocs(type: Javadoc) {
+    // 设置源码所在的位置
+    source = sourceSets.main.java
+}
+
+// 生成javadoc.jar
+task androidJavadocsJar(type: Jar) {
+    // 指定文档名称
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+// 生成sources.jar
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.java
+}
+
+// 产生相关配置文件的任务
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+tasks.create('uploadFastJsonConverter', Upload.class) {
+    configuration = project.configurations.archives
+    group = 'upload'
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: 'http://leeiidesu.com/nexus/content/repositories/releases/') {
+            authentication(userName: "${username}", password: "${password}")
+        }
+        pom.version = '1.0.3'
+        pom.artifactId = 'fastjson-converter'
+        pom.groupId = 'com.leeiidesu'
+        pom.name = project.name
+        pom.packaging = "jar"
+    }
+}
+
+
