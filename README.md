@@ -1,13 +1,8 @@
 ### MVP-clean架构底层
 
-架构如图所示
-
-![mvp-clena 架构示意图](https://upload-images.jianshu.io/upload_images/195193-73c5ad459c2199c2.png)
-
-与普通MVP最大的不同是加入了 Domain Layer 和 usecases，把原本位于 Presenter 中臃肿的逻辑代码移到了 Domain layer 中，减轻了 Presenter 的体量，而 usecases 定义了每个业务的具体操作，细化了业务粒度，也有效提高了代码的重用性。
-
-
-实例demo依赖关系如下：
+基于mvp-clean架构实现的框架底层
+该框架实现主要考虑复用性，任何基于mvp-clean的架构都可以使用该底包
+普通依赖关系如下：（如实例）
 ```
                    app
                     ↓
@@ -16,6 +11,33 @@
                 lib-core
 
 ```
+
+组件化项目使用
+
+```
+                   app
+                    ↓
+        ________________________________
+      模块1   模块2         模块3  ...  模块N
+        |______|____________|__________|
+        ↓      ↓            ↓          ↓
+                    ↓
+               实现组件中间层
+                    ↓
+                lib-base
+                    ↓
+                lib-core
+```
+
+
+架构如图所示
+
+![mvp-clena 架构示意图](https://upload-images.jianshu.io/upload_images/195193-73c5ad459c2199c2.png)
+
+与普通MVP最大的不同是加入了 Domain Layer 和 usecases，把原本位于 Presenter 中臃肿的逻辑代码移到了 Domain layer 中，减轻了 Presenter 的体量，而 usecases 定义了每个业务的具体操作，细化了业务粒度，也有效提高了代码的重用性。
+
+
+
 
 ##### lib-core 
 
