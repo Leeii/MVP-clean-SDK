@@ -2,12 +2,12 @@ package com.leeiidesu.lib.base.loading;
 
 import android.view.View;
 
+import com.leeiidesu.lib.base.R;
 import com.leeiidesu.lib.base.loading.callback.OnRetryClickListener;
 import com.leeiidesu.lib.base.loading.change.Mode;
 import com.leeiidesu.lib.base.loading.view.IStatusView;
 import com.leeiidesu.lib.base.loading.view.OriginView;
 
-import net.dgg.lib.base.R;
 
 import com.leeiidesu.lib.base.loading.change.impl.SwitchLayoutHelperFactory;
 
