@@ -91,8 +91,10 @@ public class GlideImageEngine implements ImageEngine {
             options = options.error(errorDrawable);
         }
 
-        //设置取中心图
-        options = options.centerCrop();
+        if (config.isCenterCrop()) {
+            //设置取中心图
+            options = options.centerCrop();
+        }
 
         if (config.isCircleCrop()) {
             //圆图

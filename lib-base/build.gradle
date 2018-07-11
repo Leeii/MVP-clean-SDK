@@ -105,10 +105,10 @@ tasks.create('uploadSDKBase', Upload.class) {
     repositories.mavenDeployer {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-        repository(url: 'http://leeiidesu.com/nexus/content/repositories/releases/') {
+        repository(url: 'http://118.24.71.189/nexus/content/repositories/releases/') {
             authentication(userName: "${username}", password: "${password}")
         }
-        pom.version = '2.1.0'
+        pom.version = '2.1.1'
         pom.artifactId = 'sdk-base'
         pom.groupId = 'com.leeiidesu'
         pom.name = project.name

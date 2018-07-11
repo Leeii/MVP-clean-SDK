@@ -3,11 +3,10 @@ package com.leeiidesu.lib.base.loading;
 import android.content.Context;
 import android.view.View;
 
+import com.leeiidesu.lib.base.R;
 import com.leeiidesu.lib.base.loading.callback.OnRetryClickListener;
 import com.leeiidesu.lib.base.loading.change.SwitchLayoutHelper;
 import com.leeiidesu.lib.base.loading.view.IStatusView;
-
-import net.dgg.lib.base.R;
 
 import java.util.HashMap;
 

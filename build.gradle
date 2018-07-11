@@ -22,7 +22,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'http://leeiidesu.com/nexus/content/repositories/releases' }
+        maven { url 'http://118.24.71.189/nexus/content/repositories/releases' }
         maven { url "https://jitpack.io" }
         maven { url "http://objectbox.net/beta-repo/" }
     }

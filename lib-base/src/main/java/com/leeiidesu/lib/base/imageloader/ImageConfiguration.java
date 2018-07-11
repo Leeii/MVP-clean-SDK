@@ -22,6 +22,9 @@ public class ImageConfiguration {
     // 圆图
     private boolean circleCrop;
 
+    // centerCrop
+    private boolean centerCrop;
+
     // 占位图
     private int placeholderRes;
     // 错误占位图
@@ -40,6 +43,7 @@ public class ImageConfiguration {
         this.errorHolderRes = builder.errorHolderRes;
         this.placeholderDrawable = builder.placeholderDrawable;
         this.errorHolderDrawable = builder.errorHolderDrawable;
+        this.centerCrop = builder.centerCrop;
     }
 
     public static ImageConfiguration createSimple() {
@@ -84,6 +88,10 @@ public class ImageConfiguration {
         return mStrokeWidth > 0;
     }
 
+    public boolean isCenterCrop() {
+        return centerCrop;
+    }
+
     @ColorInt
     public int getStrokeColor() {
         return mStrokeColor;
@@ -113,6 +121,7 @@ public class ImageConfiguration {
         Drawable placeholderDrawable = null;
         // 错误占位图
         Drawable errorHolderDrawable = null;
+        private boolean centerCrop;
 
         public Builder setStrokeWidth(int mStrokeWidth) {
             this.mStrokeWidth = mStrokeWidth;
@@ -157,6 +166,11 @@ public class ImageConfiguration {
         public Builder stroke(int width, @ColorInt int color) {
             setStrokeWidth(width);
             setStrokeColor(color);
+            return this;
+        }
+
+        public Builder centerCrop() {
+            centerCrop = true;
             return this;
         }
 
