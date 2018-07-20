@@ -77,10 +77,10 @@ tasks.create('uploadSDKCore', Upload.class) {
     repositories.mavenDeployer {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-        repository(url: 'http://leeiidesu.com/nexus/content/repositories/releases/') {
+        repository(url: 'http://118.24.71.189/nexus/content/repositories/releases/') {
             authentication(userName: "${username}", password: "${password}")
         }
-        pom.version = '1.0.4'
+        pom.version = '1.1.0'
         pom.artifactId = 'sdk-core'
         pom.groupId = 'com.leeiidesu'
         pom.name = project.name

@@ -14,7 +14,9 @@ import com.leeiidesu.lib.base.mvp.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.nekocode.rxlifecycle.LifecycleEvent;
 import cn.nekocode.rxlifecycle.RxLifecycle;
+import cn.nekocode.rxlifecycle.compact.RxLifecycleCompact;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -95,8 +97,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
     @Override
     public <T> ObservableTransformer<T, T> bindLifecycle() {
-        return RxLifecycle.bind(getActivity()).withObservable();
+        return RxLifecycleCompact.bind(this).disposeObservableWhen(LifecycleEvent.DESTROY_VIEW);
     }
+
     @Override
     public <T> ObservableTransformer<T, T> bindLifecycleAndThread() {
         return upstream ->
@@ -104,6 +107,7 @@ public abstract class BaseFragment extends Fragment implements BaseView {
                         .observeOn(AndroidSchedulers.mainThread())
                         .compose(bindLifecycle());
     }
+
     @Override
     public <T> ObservableTransformer<T, T> bindLifecycleAndThreadWithLoading() {
         return upstream ->

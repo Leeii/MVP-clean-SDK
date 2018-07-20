@@ -49,6 +49,7 @@ dependencies {
     api rootProject.ext.defDependencied["rxAndroid"]
     api rootProject.ext.defDependencied["rxPermissions"]
     api rootProject.ext.defDependencied["rxLifecyle"]
+    api rootProject.ext.defDependencied["rxLifecyle-compact"]
 
     api rootProject.ext.defDependencied["retrofit"]
     api rootProject.ext.defDependencied["adapter-rxjava2"]
@@ -60,9 +61,7 @@ dependencies {
     api rootProject.ext.defDependencied["dagger"]
 
     // sdk core
-    api 'com.leeiidesu:sdk-core:1.0.4'
-    // fastjson-converter
-    api 'com.leeiidesu:fastjson-converter:1.0.3'
+    api 'com.leeiidesu:sdk-core:1.1.0'
 }
 repositories {
     mavenCentral()
@@ -108,7 +107,7 @@ tasks.create('uploadSDKBase', Upload.class) {
         repository(url: 'http://118.24.71.189/nexus/content/repositories/releases/') {
             authentication(userName: "${username}", password: "${password}")
         }
-        pom.version = '2.1.1'
+        pom.version = '2.1.5'
         pom.artifactId = 'sdk-base'
         pom.groupId = 'com.leeiidesu'
         pom.name = project.name

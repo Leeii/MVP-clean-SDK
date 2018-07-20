@@ -10,6 +10,7 @@ import com.leeiidesu.lib.base.mvp.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.nekocode.rxlifecycle.LifecycleEvent;
 import cn.nekocode.rxlifecycle.RxLifecycle;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -85,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     @Override
     public <T> ObservableTransformer<T, T> bindLifecycle() {
-        return RxLifecycle.bind(this).withObservable();
+        return RxLifecycle.bind(this).disposeObservableWhen(LifecycleEvent.DESTROY);
     }
 
     @Override
