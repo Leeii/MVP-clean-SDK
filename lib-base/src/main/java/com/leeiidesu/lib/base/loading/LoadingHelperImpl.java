@@ -26,6 +26,7 @@ class LoadingHelperImpl extends LoadingHelper {
 
     private HashMap<Status, IStatusView> mViewMap = new HashMap<>();
     private OnRetryClickListener mOnRetryClickListener;
+    private Status currentStatus;
 
 
     LoadingHelperImpl(IStatusView originView,
@@ -38,6 +39,7 @@ class LoadingHelperImpl extends LoadingHelper {
 
         mViewMap.put(Status.NORMAL, originView);
         originView.getView().setTag(R.id.status_layout_origin_helper, this);
+        currentStatus = Status.NORMAL;
     }
 
     @Override
@@ -97,6 +99,7 @@ class LoadingHelperImpl extends LoadingHelper {
 
     @Override
     public void show(Status status, String message, String button) {
+        currentStatus = status;
         IStatusView statusView = mViewMap.get(status);
 
         if (statusView == null) {
@@ -109,6 +112,11 @@ class LoadingHelperImpl extends LoadingHelper {
         startAnimationIfExist(statusView);
 
         mSwitchLayoutHelper.switchLayout(statusView);
+    }
+
+    @Override
+    public boolean isRestored() {
+        return currentStatus == Status.NORMAL;
     }
 
     private void stopAnimationIfExist(IStatusView currentView) {

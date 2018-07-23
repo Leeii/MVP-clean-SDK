@@ -107,7 +107,7 @@ tasks.create('uploadSDKBase', Upload.class) {
         repository(url: 'http://118.24.71.189/nexus/content/repositories/releases/') {
             authentication(userName: "${username}", password: "${password}")
         }
-        pom.version = '2.1.5'
+        pom.version = '2.1.8'
         pom.artifactId = 'sdk-base'
         pom.groupId = 'com.leeiidesu'
         pom.name = project.name

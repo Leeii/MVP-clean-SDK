@@ -116,4 +116,6 @@ public abstract class LoadingHelper {
     public abstract void showCustom(String message, String button);
 
     public abstract void show(Status status, String message, String button);
+
+    public abstract boolean isRestored();
 }
