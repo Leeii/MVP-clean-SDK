@@ -109,7 +109,7 @@ public abstract class DefaultNetworkObserver<T> implements Observer<T> {
         } else if (t instanceof JSONException) {
             errMsg = "数据解析失败";
         } else {
-            errMsg = "数据异常";
+            errMsg = t.getMessage();
         }
 
         return errMsg;
