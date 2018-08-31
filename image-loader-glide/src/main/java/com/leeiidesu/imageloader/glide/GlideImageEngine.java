@@ -1,6 +1,7 @@
 package com.leeiidesu.imageloader.glide;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -9,6 +10,8 @@ import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.leeiidesu.lib.base.imageloader.ImageConfiguration;
 import com.leeiidesu.lib.base.imageloader.ImageEngine;
+
+import java.util.concurrent.ExecutionException;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Function;
@@ -71,6 +74,44 @@ public class GlideImageEngine implements ImageEngine {
                         return drawableRequestBuilder.submit().get();
                     }
                 });
+    }
+
+    @Override
+    public Bitmap getBitMap(Object path, Context context, ImageConfiguration config) {
+        RequestBuilder<Bitmap> load = Glide.with(context)
+                .asBitmap().load(path);
+        RequestOptions obtainOption = obtainOption(context, config);
+        if (obtainOption != null) {
+            load = load.apply(obtainOption);
+        }
+        try {
+            return load.submit().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public Drawable getDrawable(Object path, Context context, ImageConfiguration config) {
+        RequestBuilder<Drawable> load = Glide.with(context)
+                .load(path);
+        RequestOptions obtainOption = obtainOption(context, config);
+        if (obtainOption != null) {
+            load = load.apply(obtainOption);
+        }
+        try {
+            return load.submit().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

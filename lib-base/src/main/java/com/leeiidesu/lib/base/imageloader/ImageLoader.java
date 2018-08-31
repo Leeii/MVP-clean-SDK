@@ -1,6 +1,8 @@
 package com.leeiidesu.lib.base.imageloader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
@@ -41,13 +43,31 @@ public class ImageLoader {
         }
     }
 
-    public final Observable loadImage(@NonNull Object path, @NonNull Context context) {
+    public final Observable<Drawable> loadImage(@NonNull Object path, @NonNull Context context) {
         return loadImage(path, context, defaultConfiguration);
     }
 
-    public final Observable loadImage(@NonNull Object path, @NonNull Context context, @Nullable ImageConfiguration config) {
+    public final Observable<Drawable> loadImage(@NonNull Object path, @NonNull Context context, @Nullable ImageConfiguration config) {
         assertImageEngineNotNull();
         return mImageEngine.loadImage(path, context, config);
+    }
+
+    public final Drawable getDrawable(@NonNull Object path, @NonNull Context context) {
+        return getDrawable(path, context, defaultConfiguration);
+    }
+
+    public final Drawable getDrawable(@NonNull Object path, @NonNull Context context, @Nullable ImageConfiguration config) {
+        assertImageEngineNotNull();
+        return mImageEngine.getDrawable(path, context, config);
+    }
+
+    public final Bitmap getBitMap(@NonNull Object path, @NonNull Context context) {
+        return getBitMap(path, context, defaultConfiguration);
+    }
+
+    public final Bitmap getBitMap(@NonNull Object path, @NonNull Context context, @Nullable ImageConfiguration config) {
+        assertImageEngineNotNull();
+        return mImageEngine.getBitMap(path, context, config);
     }
 
 

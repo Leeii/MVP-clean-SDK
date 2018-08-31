@@ -77,7 +77,7 @@ tasks.create('uploadImageLoaderGlideImpl', Upload.class) {
         repository(url: 'http://118.24.71.189/nexus/content/repositories/releases/') {
             authentication(userName: "${username}", password: "${password}")
         }
-        pom.version = '1.1.0'
+        pom.version = '1.1.2'
         pom.artifactId = 'imageloader-glide'
         pom.groupId = 'com.leeiidesu'
         pom.name = project.name

@@ -1,6 +1,7 @@
 package com.leeiidesu.lib.base.imageloader;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -51,4 +52,8 @@ public interface ImageEngine {
      * @param config  选项
      */
     Observable<Drawable> loadImage(Object path, Context context, ImageConfiguration config);
+
+    Bitmap getBitMap(Object path, Context context, ImageConfiguration config);
+
+    Drawable getDrawable(Object path, Context context, ImageConfiguration config);
 }
