@@ -59,8 +59,7 @@ class LoadingHelperImpl extends LoadingHelper {
 
     @Override
     public void restore() {
-        stopAnimationIfExist(mSwitchLayoutHelper.getCurrentStatusView());
-        mSwitchLayoutHelper.switchLayout(mViewMap.get(Status.NORMAL));
+        show(Status.NORMAL, null, null);
     }
 
 
