@@ -1,6 +1,6 @@
 def supportLibrary = '26.1.0'
-ext {
-    android = [
+project.ext {
+    androidLibs = [
             sdkVersion       : 26,
             buildToolsVersion: '25.0.2',
 
@@ -35,8 +35,8 @@ ext {
             'butterknife'         : "com.jakewharton:butterknife:8.8.1",
             'butterknife-compiler': "com.jakewharton:butterknife-compiler:8.8.1",
 
-            'dagger'              : "com.google.dagger:dagger:2.12",
-            'dagger-compiler'     : "com.google.dagger:dagger-compiler:2.12",
+            'dagger'              : "com.google.dagger:dagger:2.15",
+            'dagger-compiler'     : "com.google.dagger:dagger-compiler:2.15",
 
             'objectbox'           : "io.objectbox:objectbox-android:1.2.0",
 

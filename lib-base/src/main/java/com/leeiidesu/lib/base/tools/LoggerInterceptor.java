@@ -88,6 +88,11 @@ public class LoggerInterceptor implements Interceptor {
 
                 if (isPlaintext(buffer)) {
                     final String bufferString = buffer.readString(charset);
+                    String[] paramArr = bufferString.split("&");
+                    for (String param : paramArr) {
+                        Logger.i(LOG_PREFIX + param.replace(',', ':'));
+                    }
+
                     Logger.i(LOG_PREFIX + bufferString);
                     if (contentType != null && "json".equals(contentType.subtype())) {
                         Logger.i(LOG_PREFIX + "\n" + mFormat.format(bufferString));
