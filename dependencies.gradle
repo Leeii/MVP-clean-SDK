@@ -1,5 +1,11 @@
 def supportLibrary = '26.1.0'
 project.ext {
+
+    modulePrefix = ':'
+    if (gradle.ext.has('libBaseModulePrefix')) {
+        modulePrefix += gradle.ext.libBaseModulePrefix
+    }
+
     androidLibs = [
             sdkVersion       : 26,
             buildToolsVersion: '25.0.2',

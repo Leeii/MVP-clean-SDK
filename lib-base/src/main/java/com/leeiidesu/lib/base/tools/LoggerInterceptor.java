@@ -90,7 +90,7 @@ public class LoggerInterceptor implements Interceptor {
                     final String bufferString = buffer.readString(charset);
                     String[] paramArr = bufferString.split("&");
                     for (String param : paramArr) {
-                        Logger.i(LOG_PREFIX + param.replace(',', ':'));
+                        Logger.i(LOG_PREFIX + param.replace('=', ':'));
                     }
 
                     Logger.i(LOG_PREFIX + bufferString);
